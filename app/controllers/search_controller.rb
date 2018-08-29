@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
   def index
-    # @stations = StationSearch.new(params[:location, :limit])
+    # @station_search = StationSearch.new(params[:zip_code, :limit])
   end
 end

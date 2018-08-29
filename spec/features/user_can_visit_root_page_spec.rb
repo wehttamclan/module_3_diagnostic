@@ -11,7 +11,7 @@ feature "User can visit root page" do
   scenario "and fill in zip code in search form and hit Locate" do
     visit root_path
 
-    fill_in :q, with: '80203'
+    fill_in :zip_code, with: '80203'
     click_on "Locate"
 
     expect(current_path).to eq(search_path)
