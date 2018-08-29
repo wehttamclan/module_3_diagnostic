@@ -18,6 +18,15 @@ feature "User can visit root page" do
 
     expect(page).to have_content("10 Nearest Stations")
 
+    conn = Faraday.new("https://developer.nrel.gov") do |faraday|
+      faraday.headers["X-Api-Key"] = "#{ENV["nrel_api_key"]}"
+      faraday.adapter Faraday.default_adapter
+    end
+
+    call = conn.get("/api/alt-fuel-stations/v1/nearest.json?limit=10&location=80203")
+
+    stations = call[:fuel_stations]
+
     within(".station") do
       expect(page).to have_css(".name")
       expect(page).to have_css(".address")
