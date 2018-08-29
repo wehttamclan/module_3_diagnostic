@@ -24,11 +24,11 @@ feature "User can visit root page" do
 
     call = JSON.parse(conn.get("/api/alt-fuel-stations/v1/nearest.json?limit=10&location=80203").body, symbolize_names: true)
 
-    stations = call[:fuel_stations]
+    station = Station.new(call[:fuel_stations].first)
 
     within(".station") do
       expect(page).to have_css(".name")
-      expect(page).to have_content(stations.first[:name])
+      expect(page).to have_content(station.name)
       expect(page).to have_css(".address")
       expect(page).to have_css(".fuel_type")
       expect(page).to have_css(".distance")

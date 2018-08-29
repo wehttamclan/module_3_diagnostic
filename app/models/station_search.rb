@@ -5,7 +5,7 @@ class StationSearch
   end
 
   def stations
-    fuel_stations do |station_info|
+    fuel_stations.map do |station_info|
       Station.new(station_info)
     end
   end
