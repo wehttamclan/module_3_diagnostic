@@ -15,5 +15,7 @@ feature "User can visit root page" do
     click_on "Locate"
 
     expect(current_path).to eq(search_path)
+
+    expect().to have_content()
   end
 end
